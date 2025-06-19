@@ -16,6 +16,7 @@ fun InputText(
     label : String,
     onTextChange : (String) -> Unit,
     maxLines : Int = 1,
+    singleLine : Boolean =  false,
     onImeAction: () -> Unit = {}
 
 

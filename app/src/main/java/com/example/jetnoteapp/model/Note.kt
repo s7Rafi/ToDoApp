@@ -1,14 +1,26 @@
 package com.example.jetnoteapp.model
 
-import android.icu.text.CaseMap.Title
+import android.annotation.SuppressLint
 import android.os.Build
 import androidx.annotation.RequiresApi
-import java.time.LocalDateTime
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import java.time.Instant
+import java.util.Date
 import java.util.UUID
+@Entity(tableName = "notes_tbl")
+data class Note (
 
-data class Note @RequiresApi(Build.VERSION_CODES.O) constructor(
-    val id : UUID = UUID.randomUUID(),
+    @PrimaryKey
+    val id: UUID = UUID.randomUUID(),
+
+    @ColumnInfo(name = "note_title")
     val title: String,
-    val description : String,
-    val entryDate : LocalDateTime = LocalDateTime.now()
+
+    @ColumnInfo(name = "note_description")
+    val description: String,
+
+    @SuppressLint("NewApi") @ColumnInfo(name = "note_entry_date")
+    val entryDate : Date = Date.from(Instant.now())
 )
